@@ -8,18 +8,18 @@ import Header from "./general/components/Header/Header";
 
 function App() {
   return (
-      <div className="flex flex-col h-screen justify-between">
-        <Header />
-        <main>
-          <Router>
-            <Routes>
-              <Route path="/" element={<div>Foobar</div>} />
-              <Route path="*" element={<NotFoundPage />} />
-            </Routes>
-          </Router>
-        </main>
-        <Footer />
-      </div>
+    <div className="flex flex-col h-screen justify-between">
+      <Header />
+      <main>
+        <Router>
+          <Routes>
+            <Route path="/" element={<div>Foobar</div>} />
+            <Route path="*" element={<NotFoundPage />} />
+          </Routes>
+        </Router>
+      </main>
+      <Footer />
+    </div>
   );
 }
 
