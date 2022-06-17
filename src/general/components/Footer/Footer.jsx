@@ -24,10 +24,7 @@ const Footer = () => {
           target="_blank"
           rel="noopener noreferrer"
         >
-          <FeatherIcon
-            icon="github"
-            alt="TacTiki GitHub repository"
-          />
+          <FeatherIcon icon="github" alt="TacTiki GitHub repository" />
         </a>
       </div>
     </footer>
