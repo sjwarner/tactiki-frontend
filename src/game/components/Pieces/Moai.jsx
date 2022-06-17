@@ -1,5 +1,4 @@
 import React from "react";
-import "../../../App.css";
 import Colours from "../../logic/Colours";
 
 const Moai = ({ colour }) => {
