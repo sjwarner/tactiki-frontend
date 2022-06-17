@@ -10,7 +10,12 @@ const BoardSquares = () => {
           {Array(4)
             .fill(1)
             .map((el, y) => {
-              return <BoardSquare key={y} />;
+              return (
+                <BoardSquare
+                  colour={(x + y) % 2 === 0 ? "black" : "white"}
+                  key={y}
+                />
+              );
             })}
         </div>
       );
