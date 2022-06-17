@@ -41,7 +41,9 @@ const Moai = ({ colour, value, noOfPieces }) => {
           />
         </g>
       </svg>
-      <span className="text-amber-400 m-1 mt-auto mb-auto">{value}</span>
+      <span className="text-amber-400 text-2xl m-1 mt-auto mb-auto">
+        {value}
+      </span>
     </div>
   );
 };
