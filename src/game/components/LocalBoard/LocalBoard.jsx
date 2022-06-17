@@ -4,6 +4,8 @@ import useSound from "use-sound";
 import BoardSquares from "../BoardSquares/BoardSquares";
 import BoardSidePane from "../SidePane/BoardSidePane/BoardSidePane";
 
+import { InitialGameStateWhite } from "../../logic/InitialGameState";
+
 import moveSfx from "../../../sounds/move.wav";
 
 const LocalBoard = () => {
@@ -13,7 +15,7 @@ const LocalBoard = () => {
     <>
       <div className="board flex flex-row m-auto">
         <div className="content">
-          <BoardSquares />
+          <BoardSquares gameState={InitialGameStateWhite} />
         </div>
       </div>
       <BoardSidePane />

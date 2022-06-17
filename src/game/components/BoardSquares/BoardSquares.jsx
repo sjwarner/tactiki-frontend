@@ -1,7 +1,7 @@
 import React from "react";
 import BoardSquare from "../BoardSquare/BoardSquare";
 
-const BoardSquares = () => {
+const BoardSquares = ({ gameState }) => {
   return Array(5)
     .fill(1)
     .map((el, x) => {
@@ -13,6 +13,7 @@ const BoardSquares = () => {
               return (
                 <BoardSquare
                   colour={(x + y) % 2 === 0 ? "black" : "white"}
+                  pieces={gameState[x][y]}
                   key={y}
                 />
               );

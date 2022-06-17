@@ -1,15 +1,32 @@
 import React from "react";
 import Colours from "../../logic/Colours";
 
-const Moai = ({ colour }) => {
+const Moai = ({ colour, value, noOfPieces }) => {
   const pieceColour = colour === Colours.WHITE ? "#fff" : "#000";
 
+  // TODO: Tidy
+  // Assign heightClass as string rather than interpolating
+  // Tailwind will not allow class name interpolation
+  let heightClass;
+  switch (noOfPieces) {
+    case 2:
+      heightClass = "h-1/2";
+      break;
+    case 3:
+      heightClass = "h-1/3";
+      break;
+    case 4:
+      heightClass = "h-1/4";
+      break;
+    default:
+      break;
+  }
+
   return (
-    <div>
+    <div className={`flex flex-row ${heightClass}`}>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 512 512"
-        id="svg2"
         version="1.1"
         width="100%"
         height="100%"
@@ -24,6 +41,7 @@ const Moai = ({ colour }) => {
           />
         </g>
       </svg>
+      <span className="text-amber-400 m-1 mt-auto mb-auto">{value}</span>
     </div>
   );
 };
