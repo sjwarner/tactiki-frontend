@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import useSound from "use-sound";
+// import useSound from "use-sound";
 
 import BoardSquares from "../BoardSquares/BoardSquares";
 import BoardSidePane from "../SidePane/BoardSidePane/BoardSidePane";
 
 import { InitialGameStateWhite } from "../../logic/InitialGameState";
 
-import moveSfx from "../../../sounds/move.wav";
+// import moveSfx from "../../../sounds/move.wav";
 
 const LocalBoard = () => {
   // const [playMoveSound] = useSound(moveSfx);

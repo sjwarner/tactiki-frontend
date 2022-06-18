@@ -2,11 +2,11 @@ import React, { useState } from "react";
 import BoardSquare from "../BoardSquare/BoardSquare";
 
 import Players from "../../logic/Players";
-import { isArrayInArray } from "../../logic/utils";
+// import { isArrayInArray } from "../../logic/utils";
 
 const BoardSquares = ({ gameState, setGameState }) => {
   const [turn, setTurn] = useState(Players.WHITE);
-  const [validMoves, setValidMoves] = useState([]);
+  // const [validMoves, setValidMoves] = useState([]);
   const [originRank, setOriginRank] = useState(null);
   const [originFile, setOriginFile] = useState(null);
 
@@ -45,7 +45,7 @@ const BoardSquares = ({ gameState, setGameState }) => {
   const clearCandidatePiece = () => {
     setOriginRank(null);
     setOriginFile(null);
-    setValidMoves([]);
+    // setValidMoves([]);
   };
 
   const movePiece = (destinationRank, destinationFile) => {
@@ -63,7 +63,7 @@ const BoardSquares = ({ gameState, setGameState }) => {
     setGameState(tmp);
     setOriginRank(null);
     setOriginFile(null);
-    setValidMoves([]);
+    // setValidMoves([]);
 
     setTurn(turn === Players.WHITE ? Players.BLACK : Players.WHITE);
     // }
