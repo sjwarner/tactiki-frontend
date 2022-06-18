@@ -68,6 +68,7 @@ const BoardSquares = ({ gameState, setGameState }) => {
         setPlayerTurn(
           playerTurn === Players.WHITE ? Players.BLACK : Players.WHITE
         );
+        setTurnMoveNumber(TurnMove.ONE);
       }
     }
   };
