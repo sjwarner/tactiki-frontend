@@ -79,6 +79,7 @@ const BoardSquares = ({
           .includes(true)
       ) {
         setWinner(Players.WHITE);
+        setInProgress(false);
       }
 
       if (
@@ -92,6 +93,7 @@ const BoardSquares = ({
           .includes(true)
       ) {
         setWinner(Players.BLACK);
+        setInProgress(false);
       }
 
       if (turnMoveNumber === TurnMove.ONE) {
