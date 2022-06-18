@@ -125,8 +125,7 @@ const BoardSquares = ({
                   valid={isArrayInArray(validMoves, [x, y])}
                   onClick={() => {
                     // Online play, if in progress and is player playerTurn - Offline play, if in progress and player playerTurn undefined
-                    // TODO: if (inProgress) {
-                    if (true) {
+                    if (inProgress) {
                       makeMove(x, y);
                     }
                   }}
