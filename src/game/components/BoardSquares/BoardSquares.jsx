@@ -4,6 +4,7 @@ import BoardSquare from "../BoardSquare/BoardSquare";
 import Players from "../../logic/Players";
 import TurnMove from "../../logic/TurnMove";
 import { calculateValidMoves, isArrayInArray } from "../../logic/utils";
+import Pieces from "../../logic/Pieces";
 
 const BoardSquares = ({ gameState, setGameState }) => {
   const [playerTurn, setPlayerTurn] = useState(Players.WHITE);
@@ -26,10 +27,10 @@ const BoardSquares = ({ gameState, setGameState }) => {
     if (
       (playerTurn === Players.WHITE &&
         candidatePiece &&
-        candidatePiece.piece === candidatePiece.piece.toUpperCase()) ||
+        candidatePiece.colour === Pieces.WHITE_MOAI) ||
       (playerTurn === Players.BLACK &&
         candidatePiece &&
-        candidatePiece.piece === candidatePiece.piece.toLowerCase())
+        candidatePiece.colour === Pieces.BLACK_MOAI)
     ) {
       setOriginRank(rank);
       setOriginFile(file);

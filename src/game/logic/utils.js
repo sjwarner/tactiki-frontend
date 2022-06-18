@@ -4,7 +4,7 @@ import Moai from "../components/Pieces/Moai";
 import Players from "./Players";
 
 export const renderPiece = (piece, noOfPieces, index) => {
-  switch (piece.piece) {
+  switch (piece.colour) {
     case Pieces.WHITE_MOAI:
       return (
         <Moai

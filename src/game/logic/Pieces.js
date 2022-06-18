@@ -1,6 +1,6 @@
 const Pieces = {
-  BLACK_MOAI: "m",
-  WHITE_MOAI: "M",
+  BLACK_MOAI: "black",
+  WHITE_MOAI: "white",
 };
 
 export default Pieces;
