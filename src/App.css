@@ -33,3 +33,19 @@
 .square-white {
   background-color: whitesmoke;
 }
+
+.square-selected {
+  background-image: linear-gradient(
+    to right,
+    rgba(255, 0, 0, 0.5),
+    rgba(255, 0, 0, 0.5)
+  );
+}
+
+.square-valid {
+  background-image: linear-gradient(
+    to right,
+    rgba(0, 255, 0, 0.5),
+    rgba(0, 255, 0, 0.5)
+  );
+}

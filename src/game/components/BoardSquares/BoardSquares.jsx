@@ -2,11 +2,11 @@ import React, { useState } from "react";
 import BoardSquare from "../BoardSquare/BoardSquare";
 
 import Players from "../../logic/Players";
-// import { isArrayInArray } from "../../logic/utils";
+import { calculateValidMoves, isArrayInArray } from "../../logic/utils";
 
 const BoardSquares = ({ gameState, setGameState }) => {
   const [turn, setTurn] = useState(Players.WHITE);
-  // const [validMoves, setValidMoves] = useState([]);
+  const [validMoves, setValidMoves] = useState([]);
   const [originRank, setOriginRank] = useState(null);
   const [originFile, setOriginFile] = useState(null);
 
@@ -31,42 +31,39 @@ const BoardSquares = ({ gameState, setGameState }) => {
     ) {
       setOriginRank(rank);
       setOriginFile(file);
-      // TODO: Calculate valid moves
-      // calculateValidMoves(
-      //     rank,
-      //     file,
-      //     gameState,
-      //     setValidMoves,
-      //     playerOneFirstTurn || playerTwoFirstTurn
-      // );
+
+      // TODO: Complete calculation of valid moves
+      calculateValidMoves(turn, rank, file, gameState, setValidMoves);
     }
   };
 
   const clearCandidatePiece = () => {
     setOriginRank(null);
     setOriginFile(null);
-    // setValidMoves([]);
+    setValidMoves([]);
   };
 
   const movePiece = (destinationRank, destinationFile) => {
+    console.log(validMoves);
+    console.log(destinationRank, destinationFile);
     // TODO: Calculate valid moves
-    // if (isArrayInArray(validMoves, [destinationRank, destinationFile])) {
-    let tmp = gameState;
+    if (isArrayInArray(validMoves, [destinationRank, destinationFile])) {
+      let tmp = gameState;
 
-    // TODO: Win condition check
-    // If back row has 4 totems in player colour...
+      // TODO: Win condition check
+      // If back row has 4 totems in player colour...
 
-    tmp[destinationRank][destinationFile].unshift(
-      gameState[originRank][originFile][0]
-    );
-    tmp[originRank][originFile].shift();
-    setGameState(tmp);
-    setOriginRank(null);
-    setOriginFile(null);
-    // setValidMoves([]);
+      tmp[destinationRank][destinationFile].unshift(
+        gameState[originRank][originFile][0]
+      );
+      tmp[originRank][originFile].shift();
+      setGameState(tmp);
+      setOriginRank(null);
+      setOriginFile(null);
+      setValidMoves([]);
 
-    setTurn(turn === Players.WHITE ? Players.BLACK : Players.WHITE);
-    // }
+      setTurn(turn === Players.WHITE ? Players.BLACK : Players.WHITE);
+    }
   };
 
   return Array(5)
@@ -81,6 +78,8 @@ const BoardSquares = ({ gameState, setGameState }) => {
                 <BoardSquare
                   colour={(x + y) % 2 === 0 ? "black" : "white"}
                   pieces={gameState[x][y]}
+                  selected={x === originRank && y === originFile}
+                  valid={isArrayInArray(validMoves, [x, y])}
                   onClick={() => {
                     // Online play, if in progress and is player turn - Offline play, if in progress and player turn undefined
                     // TODO: if (inProgress) {

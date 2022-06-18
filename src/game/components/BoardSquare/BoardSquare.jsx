@@ -1,9 +1,14 @@
 import React from "react";
 import { renderPiece } from "../../logic/utils";
 
-const BoardSquare = ({ colour, pieces, onClick }) => {
+const BoardSquare = ({ colour, pieces, selected, valid, onClick }) => {
   return (
-    <div className={`flex flex-col square square-${colour}`} onClick={onClick}>
+    <div
+      className={`square square-${colour} ${
+        selected ? "square-selected" : ""
+      } ${valid ? "square-valid" : ""} `}
+      onClick={onClick}
+    >
       {pieces.map((piece) => renderPiece(piece, pieces.length))}
     </div>
   );
