@@ -6,9 +6,17 @@ import TurnMove from "../../logic/TurnMove";
 import { calculateValidMoves, isArrayInArray } from "../../logic/utils";
 import Pieces from "../../logic/Pieces";
 
-const BoardSquares = ({ gameState, setGameState }) => {
-  const [playerTurn, setPlayerTurn] = useState(Players.WHITE);
-  const [turnMoveNumber, setTurnMoveNumber] = useState(TurnMove.ONE);
+const BoardSquares = ({
+  gameState,
+  setGameState,
+  inProgress,
+  setInProgress,
+  playerTurn,
+  setPlayerTurn,
+  turnMoveNumber,
+  setTurnMoveNumber,
+  setWinner,
+}) => {
   const [validMoves, setValidMoves] = useState([]);
   const [originRank, setOriginRank] = useState(null);
   const [originFile, setOriginFile] = useState(null);
@@ -51,9 +59,6 @@ const BoardSquares = ({ gameState, setGameState }) => {
     if (isArrayInArray(validMoves, [destinationRank, destinationFile])) {
       let tmp = gameState;
 
-      // TODO: Win condition check
-      // If back row has 4 totems in player colour...
-
       tmp[destinationRank][destinationFile].unshift(
         gameState[originRank][originFile][0]
       );
@@ -62,6 +67,32 @@ const BoardSquares = ({ gameState, setGameState }) => {
       setOriginRank(null);
       setOriginFile(null);
       setValidMoves([]);
+
+      if (
+        playerTurn === Players.WHITE &&
+        gameState[0]
+          .map(
+            (totem) =>
+              totem.length === 4 &&
+              totem.every((tiki) => tiki.colour === Pieces.WHITE_MOAI)
+          )
+          .includes(true)
+      ) {
+        setWinner(Players.WHITE);
+      }
+
+      if (
+        playerTurn === Players.BLACK &&
+        gameState[4]
+          .map(
+            (totem) =>
+              totem.length === 4 &&
+              totem.every((tiki) => tiki.colour === Pieces.BLACK_MOAI)
+          )
+          .includes(true)
+      ) {
+        setWinner(Players.BLACK);
+      }
 
       if (turnMoveNumber === TurnMove.ONE) {
         setTurnMoveNumber(TurnMove.TWO);

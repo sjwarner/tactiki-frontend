@@ -1,5 +1,6 @@
 import React from "react";
 import { renderPiece } from "../../logic/utils";
+import Empty from "../Pieces/Empty";
 
 const BoardSquare = ({ colour, pieces, selected, valid, onClick }) => {
   return (
@@ -9,7 +10,11 @@ const BoardSquare = ({ colour, pieces, selected, valid, onClick }) => {
       } ${valid ? "square-valid" : ""} `}
       onClick={onClick}
     >
-      {pieces.map((piece, index) => renderPiece(piece, pieces.length, index))}
+      {pieces.length ? (
+        pieces.map((piece, index) => renderPiece(piece, pieces.length, index))
+      ) : (
+        <Empty />
+      )}
     </div>
   );
 };

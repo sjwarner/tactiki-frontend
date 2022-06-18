@@ -15,6 +15,7 @@
 }
 
 .content {
+  height: 100%;
   width: 100%;
 }
 
@@ -23,6 +24,7 @@
 }
 
 .square {
+  max-height: 140px;
   width: 20%;
 }
 
