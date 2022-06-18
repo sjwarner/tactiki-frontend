@@ -19,6 +19,7 @@ const Moai = ({ colour, value, noOfPieces }) => {
       heightClass = "h-1/4";
       break;
     default:
+      heightClass = "h-full";
       break;
   }
 

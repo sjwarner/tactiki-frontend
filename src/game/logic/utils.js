@@ -16,3 +16,11 @@ export const renderPiece = (piece, noOfPieces) => {
       return <Empty />;
   }
 };
+
+export const isArrayInArray = (arr, item) => {
+  const item_as_string = JSON.stringify(item);
+
+  return arr.some(function (ele) {
+    return JSON.stringify(ele) === item_as_string;
+  });
+};
