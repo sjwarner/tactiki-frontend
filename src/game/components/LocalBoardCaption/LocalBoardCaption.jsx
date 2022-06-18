@@ -25,7 +25,7 @@ const LocalBoardCaption = ({
     <div className="mt-4 mb-4">
       {winner && (
         <Caption>
-          🎉 {winner === Players.WHITE ? "Player One" : "Player Two"} won! 🎉
+          🎉 {winner === Players.WHITE ? "White" : "Black"} won! 🎉
         </Caption>
       )}
       {inProgress && (
