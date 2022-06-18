@@ -9,7 +9,7 @@ const BoardSquare = ({ colour, pieces, selected, valid, onClick }) => {
       } ${valid ? "square-valid" : ""} `}
       onClick={onClick}
     >
-      {pieces.map((piece) => renderPiece(piece, pieces.length))}
+      {pieces.map((piece, index) => renderPiece(piece, pieces.length, index))}
     </div>
   );
 };

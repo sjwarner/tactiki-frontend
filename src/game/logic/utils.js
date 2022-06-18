@@ -3,15 +3,25 @@ import Empty from "../components/Pieces/Empty";
 import Moai from "../components/Pieces/Moai";
 import Players from "./Players";
 
-export const renderPiece = (piece, noOfPieces) => {
+export const renderPiece = (piece, noOfPieces, index) => {
   switch (piece.piece) {
     case Pieces.WHITE_MOAI:
       return (
-        <Moai colour="white" value={piece.value} noOfPieces={noOfPieces} />
+        <Moai
+          colour="white"
+          value={piece.value}
+          noOfPieces={noOfPieces}
+          key={index}
+        />
       );
     case Pieces.BLACK_MOAI:
       return (
-        <Moai colour="black" value={piece.value} noOfPieces={noOfPieces} />
+        <Moai
+          colour="black"
+          value={piece.value}
+          noOfPieces={noOfPieces}
+          key={index}
+        />
       );
     default:
       return <Empty />;
