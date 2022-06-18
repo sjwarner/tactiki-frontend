@@ -2,10 +2,12 @@ import React, { useState } from "react";
 import BoardSquare from "../BoardSquare/BoardSquare";
 
 import Players from "../../logic/Players";
+import TurnMove from "../../logic/TurnMove";
 import { calculateValidMoves, isArrayInArray } from "../../logic/utils";
 
 const BoardSquares = ({ gameState, setGameState }) => {
-  const [turn, setTurn] = useState(Players.WHITE);
+  const [playerTurn, setPlayerTurn] = useState(Players.WHITE);
+  const [turnMoveNumber, setTurnMoveNumber] = useState(TurnMove.ONE);
   const [validMoves, setValidMoves] = useState([]);
   const [originRank, setOriginRank] = useState(null);
   const [originFile, setOriginFile] = useState(null);
@@ -20,12 +22,12 @@ const BoardSquares = ({ gameState, setGameState }) => {
 
   const selectCandidatePiece = (rank, file) => {
     let candidatePiece = gameState[rank][file]?.[0];
-    console.log(candidatePiece);
+
     if (
-      (turn === Players.WHITE &&
+      (playerTurn === Players.WHITE &&
         candidatePiece &&
         candidatePiece.piece === candidatePiece.piece.toUpperCase()) ||
-      (turn === Players.BLACK &&
+      (playerTurn === Players.BLACK &&
         candidatePiece &&
         candidatePiece.piece === candidatePiece.piece.toLowerCase())
     ) {
@@ -33,7 +35,7 @@ const BoardSquares = ({ gameState, setGameState }) => {
       setOriginFile(file);
 
       // TODO: Complete calculation of valid moves
-      calculateValidMoves(turn, rank, file, gameState, setValidMoves);
+      calculateValidMoves(playerTurn, rank, file, gameState, setValidMoves);
     }
   };
 
@@ -44,8 +46,6 @@ const BoardSquares = ({ gameState, setGameState }) => {
   };
 
   const movePiece = (destinationRank, destinationFile) => {
-    console.log(validMoves);
-    console.log(destinationRank, destinationFile);
     // TODO: Calculate valid moves
     if (isArrayInArray(validMoves, [destinationRank, destinationFile])) {
       let tmp = gameState;
@@ -62,7 +62,13 @@ const BoardSquares = ({ gameState, setGameState }) => {
       setOriginFile(null);
       setValidMoves([]);
 
-      setTurn(turn === Players.WHITE ? Players.BLACK : Players.WHITE);
+      if (turnMoveNumber === TurnMove.ONE) {
+        setTurnMoveNumber(TurnMove.TWO);
+      } else {
+        setPlayerTurn(
+          playerTurn === Players.WHITE ? Players.BLACK : Players.WHITE
+        );
+      }
     }
   };
 
@@ -81,7 +87,7 @@ const BoardSquares = ({ gameState, setGameState }) => {
                   selected={x === originRank && y === originFile}
                   valid={isArrayInArray(validMoves, [x, y])}
                   onClick={() => {
-                    // Online play, if in progress and is player turn - Offline play, if in progress and player turn undefined
+                    // Online play, if in progress and is player playerTurn - Offline play, if in progress and player playerTurn undefined
                     // TODO: if (inProgress) {
                     if (true) {
                       makeMove(x, y);

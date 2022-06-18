@@ -37,7 +37,7 @@ export const isArrayInArray = (arr, item) => {
 };
 
 export const calculateValidMoves = (
-  turn,
+  playerTurn,
   rank,
   file,
   gameState,
@@ -47,13 +47,13 @@ export const calculateValidMoves = (
 
   // TODO: Add all valid moves
   // TODO: Logic for can't jump on someone else's back-row piece
-  if (turn === Players.WHITE) {
+  if (playerTurn === Players.WHITE) {
     validMoves.push([rank - 1, file]);
     validMoves.push([rank, file - 1]);
     validMoves.push([rank, file + 1]);
   }
 
-  if (turn === Players.BLACK) {
+  if (playerTurn === Players.BLACK) {
     validMoves.push([rank + 1, file]);
     validMoves.push([rank, file - 1]);
     validMoves.push([rank, file + 1]);
