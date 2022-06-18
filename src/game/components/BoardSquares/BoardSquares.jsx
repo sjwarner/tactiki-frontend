@@ -109,7 +109,11 @@ const BoardSquares = ({
     .fill(1)
     .map((el, x) => {
       return (
-        <div id={`rank-${x}`} className="board-row flex flex-row" key={x}>
+        <div
+          id={`rank-${x}`}
+          className="board-row flex flex-row justify-center"
+          key={x}
+        >
           {Array(4)
             .fill(1)
             .map((el, y) => {
